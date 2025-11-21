@@ -260,28 +260,24 @@ span {
     direction: rtl;
 }
 
-.about-content p {
+.about-text {
     font-size: 1.6rem;
-    margin: 2rem 0 3rem;
     line-height: 2;
     text-align: right;
     direction: rtl;
-    unicode-bidi: plaintext;
 }
 
-/* الحل الجذري للمشكلة */
 .arabic-text {
-    direction: rtl;
     text-align: right;
-    unicode-bidi: embed;
+    direction: rtl;
+    margin-bottom: 1rem;
 }
 
 .english-text {
-    direction: ltr;
     text-align: left;
-    unicode-bidi: embed;
-    display: inline-block;
-    margin-right: 5px;
+    direction: ltr;
+    margin-bottom: 1rem;
+    font-style: italic;
 }
 
 .about-btn-container {
@@ -593,4 +589,12 @@ span {
     .header .logo-img {
         height: 40px;
     }
+}
+
+/* ====== إصلاح اتجاه النص المتحرك (Typed.js) ====== */
+.multiple-text {
+    direction: rtl;
+    unicode-bidi: plaintext;
+    text-align: right;
+    font-family: 'Cairo', sans-serif;
 }
