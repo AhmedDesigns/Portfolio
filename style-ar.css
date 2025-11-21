@@ -503,25 +503,3 @@ span {
     margin-top: 2rem;
   }
 }
-
-html, body {
-  direction: rtl;
-  text-align: right;
-}
-
-/* لضبط اتجاه روابط الـ navbar */
-.navbar {
-  direction: rtl;
-  text-align: right !important;
-}
-
-.navbar a {
-  margin-left: 0;
-  margin-right: 4rem; /* نفس المسافة لكن باتجاه RTL */
-}
-
-/* توحيد الاتجاه في الـ sections */
-section, h1, h2, h3, p {
-  direction: rtl;
-  text-align: right;
-}
