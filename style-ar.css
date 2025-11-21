@@ -246,11 +246,11 @@ span {
 }
 
 .about-content {
-    text-align: left;
+    text-align: right;
 }
 
 .about-content h2 {
-    text-align: left;
+    text-align: right;
     line-height: 1.5;
 }
 
@@ -262,13 +262,13 @@ span {
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
     line-height: 2;
-    direction: ltr;
-    text-align: left;
+    direction: rtl;
+    text-align: right;
 }
 
 .about-btn-container {
-    text-align: left;
-    direction: ltr;
+    text-align: right;
+    direction: rtl;
 }
 
 /* ====== About Full ====== */
@@ -297,7 +297,7 @@ span {
 }
 
 .about-full .about-content h2 {
-    text-align: left;
+    text-align: right;
     margin-bottom: 3rem;
     font-size: 4rem;
 }
@@ -306,8 +306,8 @@ span {
     font-size: 1.8rem;
     margin: 2rem 0;
     line-height: 1.8;
-    text-align: left;
-    direction: ltr;
+    text-align: right;
+    direction: rtl;
 }
 
 .about-full .about-content ul {
@@ -320,8 +320,8 @@ span {
     margin: 1rem 0;
     line-height: 1.6;
     list-style-type: disc;
-    direction: ltr;
-    text-align: left;
+    direction: rtl;
+    text-align: right;
 }
 
 .about-full .about-content strong {
@@ -633,7 +633,7 @@ span {
     }
 
     .about-full .about-content p {
-        text-align: left;
+        text-align: right;
     }
 
     .about-btn-container {
