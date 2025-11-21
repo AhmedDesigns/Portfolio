@@ -248,13 +248,13 @@ span {
 }
 
 .about-content {
-    text-align: right;
+    text-align: left;
     width: 100%;
     direction: rtl;
 }
 
 .about-content h2 {
-    text-align: right;
+    text-align: left;
     line-height: 1.5;
     margin-bottom: 2rem;
     direction: rtl;
@@ -262,7 +262,7 @@ span {
 
 .about-content h3 {
     font-size: 2.6rem;
-    text-align: right;
+    text-align: left;
     direction: rtl;
 }
 
