@@ -316,23 +316,23 @@ span {
 
 .about-full .about-content {
     flex: 1 1 40rem;
-    text-align: left;
-    direction: ltr;
+    text-align: right;
+    direction: rtl;
 }
 
 .about-full .about-content h2 {
-    text-align: left;
+    text-align: right;
     margin-bottom: 3rem;
     font-size: 4rem;
-    direction: ltr;
+    direction: rtl;
 }
 
 .about-full .about-content p {
     font-size: 1.8rem;
     margin: 2rem 0;
     line-height: 1.8;
-    text-align: left;
-    direction: ltr;
+    text-align: right;
+    direction: rtl;
     unicode-bidi: plaintext;
 }
 
