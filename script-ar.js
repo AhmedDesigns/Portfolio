@@ -60,13 +60,94 @@ if (typeof ScrollReveal !== 'undefined') {
   ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 }
 
-// تهيئة Typed.js
-if (typeof Typed !== 'undefined') {
+// تهيئة Typed.js مع تحسينات للغة العربية
+function initializeTypedJS() {
+  if (typeof Typed !== 'undefined') {
+    // الانتظار حتى يتم تحميل الخطوط العربية
+    if ('fonts' in document) {
+      document.fonts.ready.then(function() {
+        startTypedJS();
+      });
+    } else {
+      // بديل للمتصفحات التي لا تدعم Font Loading API
+      setTimeout(startTypedJS, 1000);
+    }
+  } else {
+    // إذا لم تكن مكتبة Typed.js متوفرة، استخدم البديل
+    startFallbackTyping();
+  }
+}
+
+function startTypedJS() {
   const typed = new Typed('.multiple-text', {
-    strings: ['\u200Fمصمم ويب', '\u200Fمطور ويب', '\u200Fمصمم UI/UX', '\u200Fخبير تجارة إلكترونية'],
-    typeSpeed: 100,
-    backSpeed: 100,
-    backDelay: 1000,
-    loop: true
+    strings: ['مصمم ويب', 'مطور ويب', 'مصمم UI/UX', 'خبير تجارة إلكترونية'],
+    typeSpeed: 80,
+    backSpeed: 50,
+    backDelay: 1500,
+    loop: true,
+    smartBackspace: false, // مهم للغة العربية
+    shuffle: false,
+    showCursor: true,
+    cursorChar: '|',
+    contentType: 'html'
   });
 }
+
+// بديل Typed.js للغة العربية في حالة فشل المكتبة
+function startFallbackTyping() {
+  const textElement = document.querySelector('.multiple-text');
+  if (!textElement) return;
+  
+  const texts = ['مصمم ويب', 'مطور ويب', 'مصمم UI/UX', 'خبير تجارة إلكترونية'];
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+  
+  function type() {
+    const currentText = texts[textIndex];
+    
+    if (isDeleting) {
+      // مسح النص
+      textElement.textContent = currentText.substring(0, charIndex - 1);
+      charIndex--;
+      typingSpeed = 50;
+    } else {
+      // كتابة النص
+      textElement.textContent = currentText.substring(0, charIndex + 1);
+      charIndex++;
+      typingSpeed = 100;
+    }
+
+    if (!isDeleting && charIndex === currentText.length) {
+      // الانتظار بعد اكتمال الكتابة
+      typingSpeed = 1500;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      // الانتقال للنص التالي
+      isDeleting = false;
+      textIndex = (textIndex + 1) % texts.length;
+      typingSpeed = 500;
+    }
+
+    setTimeout(type, typingSpeed);
+  }
+
+  // بدء التأثير
+  type();
+}
+
+// بدء التهيئة عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+  initializeTypedJS();
+});
+
+// بديل إضافي في حالة فشل جميع المحاولات
+window.addEventListener('load', function() {
+  // التحقق من أن النص ظهر بشكل صحيح
+  const typedElement = document.querySelector('.multiple-text');
+  if (typedElement && typedElement.textContent === '') {
+    // إذا كان العنصر لا يزال فارغاً، استخدم البديل
+    startFallbackTyping();
+  }
+});
