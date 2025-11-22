@@ -247,7 +247,7 @@ span {
 }
 
 .about-content {
-    text-align: center;
+    text-align: center; /* تغيير من left إلى center */
 }
 
 .about-content h2 {
@@ -264,12 +264,12 @@ span {
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
     line-height: 2;
-    direction: rtl;
-    text-align: right;
+    direction: rtl !important;
+    text-align: right !important;
 }
 
 .about-btn-container {
-    text-align: center;
+    text-align: center; /* تغيير من left إلى center */
     direction: ltr;
 }
 
