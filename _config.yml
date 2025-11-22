@@ -1,0 +1,7 @@
+title: "Ahmed Esmat - Portfolio"
+description: "Professional Web Designer & Developer"
+baseurl: "/Portfolio"
+url: "https://ahmeddesigns.github.io"
+theme: jekyll-theme-cayman
+include:
+  - .nojekyll
