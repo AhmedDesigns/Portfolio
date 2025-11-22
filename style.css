@@ -27,7 +27,7 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
-    direction: rtl;
+    direction: ltr;
 }
 
 section {
@@ -259,13 +259,13 @@ span {
     font-size: 2.6rem;
 }
 
-/* ====== تعديل نصوص نبذة عني لتكون RTL ====== */
+/* ====== تعديل نصوص نبذة عني ====== */
 .about-content p {
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
     line-height: 2;
-    direction: rtl !important;
-    text-align: right !important;
+    direction: ltr !important;
+    text-align: left !important;
 }
 
 .about-btn-container {
@@ -306,7 +306,7 @@ span {
 }
 
 .about-full .about-content h2 {
-    text-align: right;
+    text-align: left;
     margin-bottom: 3rem;
     font-size: 4rem;
 }
@@ -315,13 +315,13 @@ span {
     font-size: 1.8rem;
     margin: 2rem 0;
     line-height: 1.8;
-    text-align: right;
-    direction: rtl;
+    text-align: left;
+    direction: ltr;
 }
 
 .about-full .about-content ul {
     margin: 2rem 0;
-    padding-right: 2rem;
+    padding-left: 2rem;
 }
 
 .about-full .about-content li {
@@ -329,8 +329,8 @@ span {
     margin: 1rem 0;
     line-height: 1.6;
     list-style-type: disc;
-    direction: rtl;
-    text-align: right;
+    direction: ltr;
+    text-align: left;
 }
 
 .about-full .about-content strong {
@@ -409,29 +409,29 @@ span {
     }
 }
 
-/* موبايل - صورتين */
+/* موبايل - صورة واحدة */
 @media (max-width: 768px) {
     .portfolio-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .project {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+    }
+}
+
+/* أصغر الشاشات: صورة واحدة */
+@media (max-width: 450px) {
+    .portfolio-container {
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     
     .project {
-        padding: 0.8rem;
+        padding: 1rem;
         border-radius: 1rem;
-    }
-}
-
-/* أصغر الشاشات: صورتين مع تقليل الهوامش */
-@media (max-width: 450px) {
-    .portfolio-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .project {
-        padding: 0.5rem;
-        border-radius: 0.8rem;
     }
     
     .portfolio h2 {
@@ -556,33 +556,33 @@ span {
 /* ====== إصلاح نهائي لـ Typed.js ====== */
 .multiple-text {
     font-family: 'Cairo', sans-serif !important;
-    direction: rtl !important;
-    text-align: right !important;
+    direction: ltr !important;
+    text-align: left !important;
 }
 
 .typed-cursor {
     font-family: 'Cairo', sans-serif !important;
 }
 
-html[lang="ar"] .multiple-text,
-html[dir="rtl"] .multiple-text {
+html[lang="en"] .multiple-text,
+html[dir="ltr"] .multiple-text {
     font-family: 'Cairo', sans-serif !important;
-    direction: rtl !important;
-    text-align: right !important;
+    direction: ltr !important;
+    text-align: left !important;
 }
 
-/* تأكيد إضافي على النص العربي */
-html[lang="ar"] .home-content h3,
-html[dir="rtl"] .home-content h3 {
+/* تأكيد إضافي على النص الإنجليزي */
+html[lang="en"] .home-content h3,
+html[dir="ltr"] .home-content h3 {
     font-family: 'Cairo', sans-serif !important;
-    text-align: right !important;
+    text-align: left !important;
 }
 
-html[lang="ar"] .home-content .multiple-text,
-html[dir="rtl"] .home-content .multiple-text {
+html[lang="en"] .home-content .multiple-text,
+html[dir="ltr"] .home-content .multiple-text {
     font-family: 'Cairo', sans-serif !important;
-    direction: rtl !important;
-    text-align: right !important;
+    direction: ltr !important;
+    text-align: left !important;
 }
 
 /* ====== Responsive Design ====== */
@@ -609,7 +609,7 @@ html[dir="rtl"] .home-content .multiple-text {
     .navbar {
         position: absolute;
         top: 100%;
-        right: 0;
+        left: 0;
         width: 100%;
         padding: 1rem 3%;
         background: var(--bg-color);
@@ -674,7 +674,7 @@ html[dir="rtl"] .home-content .multiple-text {
     }
 
     .about-full .about-content p {
-        text-align: right;
+        text-align: left;
     }
 
     .about-btn-container {
