@@ -39,7 +39,7 @@ section {
 .header {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
     padding: 2rem 9%;
     background: var(--bg-color);
@@ -58,8 +58,8 @@ section {
     display: flex;
     align-items: center;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 50%;
+    transform: translateX(50%);
 }
 
 .header .logo-img {
@@ -87,7 +87,7 @@ section {
     color: var(--main-color);
 }
 
-/* ====== العناصر على اليمين ====== */
+/* ====== العناصر على اليسار ====== */
 .nav-right {
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@ section {
 .navbar a {
     font-size: 1.7rem;
     color: var(--text-color);
-    margin-left: 4rem;
+    margin-right: 4rem;
     transition: .3s;
 }
 
@@ -179,7 +179,7 @@ span {
     border-radius: 50%;
     font-size: 2rem;
     color: var(--main-color);
-    margin: 3rem 1.5rem 3rem 0;
+    margin: 3rem 0 3rem 1.5rem;
     transition: .5s ease;
 }
 
@@ -270,7 +270,6 @@ span {
 
 .about-btn-container {
     text-align: center;
-    direction: ltr;
 }
 
 /* أضف هذا الكود لجعل الزر في المنتصف */
@@ -409,29 +408,29 @@ span {
     }
 }
 
-/* موبايل - صورتين */
+/* موبايل - صورة واحدة */
 @media (max-width: 768px) {
     .portfolio-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .project {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+    }
+}
+
+/* أصغر الشاشات: صورة واحدة */
+@media (max-width: 450px) {
+    .portfolio-container {
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     
     .project {
-        padding: 0.8rem;
+        padding: 1rem;
         border-radius: 1rem;
-    }
-}
-
-/* أصغر الشاشات: صورتين مع تقليل الهوامش */
-@media (max-width: 450px) {
-    .portfolio-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .project {
-        padding: 0.5rem;
-        border-radius: 0.8rem;
     }
     
     .portfolio h2 {
@@ -626,7 +625,7 @@ html[dir="rtl"] .home-content .multiple-text {
     .navbar a {
         margin: 1rem 0;
         display: block;
-        margin-left: 0;
+        margin-right: 0;
     }
 
     .header {
