@@ -57,42 +57,44 @@ if (typeof ScrollReveal !== 'undefined') {
     ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 }
 
-//==================== typed js ====================//
-function initializeTyped() {
+//==================== typed js - الحل النهائي ====================//
+function initTypedJS() {
+    // الانتظار حتى يتم تحميل المكتبة والعنصر
     if (typeof Typed === 'undefined') {
-        console.log('Typed.js not loaded yet');
+        setTimeout(initTypedJS, 100);
         return;
     }
     
     const typedElement = document.querySelector('.multiple-text');
     if (!typedElement) {
-        console.log('Typed element not found');
+        setTimeout(initTypedJS, 100);
         return;
     }
     
-    // تدمير أي نسخة سابقة من Typed
+    // تدمير أي نسخة سابقة
     if (window.typedInstance) {
         window.typedInstance.destroy();
         window.typedInstance = null;
     }
     
-    // تنظيف العنصر أولاً
+    // تنظيف العنصر تماماً
     typedElement.innerHTML = '';
     
-    // التحقق من اللغة بدقة
-    const isArabic = document.documentElement.lang === 'ar' || 
-                    document.documentElement.dir === 'rtl' ||
-                    document.querySelector('html[lang="ar"]') !== null ||
-                    window.location.href.includes('index-ar') ||
-                    window.location.href.includes('arabic');
+    // اكتشاف اللغة بدقة
+    const isArabicPage = 
+        document.documentElement.getAttribute('lang') === 'ar' ||
+        document.documentElement.getAttribute('dir') === 'rtl' ||
+        window.location.pathname.includes('index-ar') ||
+        window.location.pathname.includes('arabic') ||
+        document.querySelector('meta[name="description"][content*="عربي"]') !== null;
     
-    console.log('Current page language:', isArabic ? 'Arabic' : 'English');
+    console.log('تم اكتشاف اللغة:', isArabicPage ? 'عربية' : 'إنجليزية');
     
     // النصوص بناءً على اللغة
-    const arabicTexts = ['مصمم ويب', 'مطور ويب', 'مصمم UI/UX', 'خبير تجارة إلكترونية'];
-    const englishTexts = ['Web Designer', 'Web Developer', 'UI/UX Designer', 'E-commerce Expert'];
+    const arabicStrings = ['مصمم ويب', 'مطور ويب', 'مصمم UI/UX', 'خبير تجارة إلكترونية'];
+    const englishStrings = ['Web Designer', 'Web Developer', 'UI/UX Designer', 'E-commerce Expert'];
     
-    const stringsToUse = isArabic ? arabicTexts : englishTexts;
+    const stringsToUse = isArabicPage ? arabicStrings : englishStrings;
     
     // تهيئة Typed.js
     window.typedInstance = new Typed('.multiple-text', {
@@ -103,26 +105,49 @@ function initializeTyped() {
         loop: true,
         showCursor: true,
         cursorChar: '|',
-        onBegin: function(self) {
-            console.log('Typed.js started with strings:', self.strings);
+        onBegin: function() {
+            console.log('بدأ Typed.js بالنصوص:', stringsToUse);
+        },
+        onStringTyped: function() {
+            // التأكد من أن النص يظهر بشكل صحيح
+            typedElement.style.fontFamily = "'Cairo', sans-serif";
+            typedElement.style.direction = "rtl";
+            typedElement.style.textAlign = "right";
         }
     });
 }
 
-// تشغيل Typed بعد تحميل الصفحة بالكامل
+// تشغيل Typed بعد تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function() {
-    // الانتظار قليلاً لضمان تحميل جميع المكتبات
-    setTimeout(initializeTyped, 500);
+    setTimeout(initTypedJS, 500);
 });
 
-// أيضاً تشغيل عند اكتمال تحميل الصفحة
+// حل إضافي للصفحات التي يتم تحميلها متأخراً
 window.addEventListener('load', function() {
-    setTimeout(initializeTyped, 300);
+    setTimeout(initTypedJS, 300);
 });
 
-// حل إضافي للصفحات التي يتم تحميلها ديناميكياً
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeTyped);
-} else {
-    setTimeout(initializeTyped, 100);
-}
+// حل طارئ إذا فشل كل شيء
+setTimeout(function() {
+    if (typeof Typed !== 'undefined' && document.querySelector('.multiple-text')) {
+        const currentText = document.querySelector('.multiple-text').textContent;
+        const isArabic = document.documentElement.lang === 'ar' || 
+                        document.documentElement.dir === 'rtl';
+        
+        // إذا كانت الصفحة عربية ولكن النص إنجليزي، أعد التشغيل
+        if (isArabic && (currentText.includes('Web') || currentText.includes('Designer'))) {
+            console.log('اكتشاف خطأ: النص إنجليزي في الصفحة العربية، إعادة التشغيل...');
+            if (window.typedInstance) {
+                window.typedInstance.destroy();
+            }
+            
+            window.typedInstance = new Typed('.multiple-text', {
+                strings: ['مصمم ويب', 'مطور ويب', 'مصمم UI/UX', 'خبير تجارة إلكترونية'],
+                typeSpeed: 100,
+                backSpeed: 100,
+                backDelay: 1000,
+                loop: true
+            });
+        }
+    }
+}, 2000);
