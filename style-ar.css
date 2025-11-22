@@ -9,7 +9,6 @@
     border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: 'Cairo', sans-serif;
 }
 
 :root {
@@ -24,10 +23,22 @@ html {
     overflow-x: hidden;
 }
 
-body {
+/* ====== تنسيقات عامة للنسخة العربية ====== */
+html[dir="rtl"] body {
     background: var(--bg-color);
     color: var(--text-color);
     direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
+}
+
+/* ====== تنسيقات عامة للنسخة الإنجليزية ====== */
+html[dir="ltr"] body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    direction: ltr;
+    font-family: 'Arial', sans-serif;
+    text-align: left;
 }
 
 section {
@@ -105,14 +116,21 @@ section {
 /* Navbar Links */
 .navbar {
     display: flex;
-    direction: rtl;
 }
 
-.navbar a {
+html[dir="rtl"] .navbar a {
     font-size: 1.7rem;
     color: var(--text-color);
     margin-right: 4rem;
     margin-left: 0;
+    transition: .3s;
+}
+
+html[dir="ltr"] .navbar a {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    margin-right: 0;
     transition: .3s;
 }
 
@@ -145,8 +163,12 @@ section {
     box-shadow: 0 0 3rem var(--main-color);
 }
 
-.home-content {
+html[dir="rtl"] .home-content {
     text-align: right;
+}
+
+html[dir="ltr"] .home-content {
+    text-align: left;
 }
 
 .home-content h3 {
@@ -174,14 +196,20 @@ span {
 .home-content p {
     font-size: 1.6rem;
     line-height: 2;
-    text-align: right;
 }
 
 /* ====== Social Media Icons ====== */
 .social-media {
     display: flex;
-    justify-content: flex-end;
     direction: ltr;
+}
+
+html[dir="rtl"] .social-media {
+    justify-content: flex-end;
+}
+
+html[dir="ltr"] .social-media {
+    justify-content: flex-start;
 }
 
 .social-media a {
@@ -195,7 +223,7 @@ span {
     border-radius: 50%;
     font-size: 2rem;
     color: var(--main-color);
-    margin: 3rem 0 3rem 1.5rem;
+    margin: 3rem 1.5rem 3rem 0;
     transition: .5s ease;
 }
 
@@ -208,9 +236,16 @@ span {
 /* ====== Buttons ====== */
 .home-buttons {
     display: flex;
-    justify-content: flex-end;
     gap: 1rem;
     direction: ltr;
+}
+
+html[dir="rtl"] .home-buttons {
+    justify-content: flex-end;
+}
+
+html[dir="ltr"] .home-buttons {
+    justify-content: flex-start;
 }
 
 .btn {
@@ -225,6 +260,7 @@ span {
     font-weight: 600;
     transition: .5s ease;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn:hover {
@@ -261,8 +297,12 @@ span {
     font-size: 4.5rem;
 }
 
-.about-content {
+html[dir="rtl"] .about-content {
     text-align: right;
+}
+
+html[dir="ltr"] .about-content {
+    text-align: left;
 }
 
 .about-content h2 {
@@ -278,7 +318,6 @@ span {
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
     line-height: 2;
-    text-align: right;
 }
 
 .about-content .btn {
@@ -387,7 +426,14 @@ span {
 .contact form {
     max-width: 70rem;
     margin: 0 auto;
+}
+
+html[dir="rtl"] .contact form {
     text-align: right;
+}
+
+html[dir="ltr"] .contact form {
+    text-align: left;
 }
 
 .contact form .input-box {
@@ -406,7 +452,16 @@ span {
     background: var(--second-bg-color);
     border-radius: .8rem;
     margin: .7rem 0;
+}
+
+html[dir="rtl"] .contact form .input-box input,
+html[dir="rtl"] .contact form textarea {
     text-align: right;
+}
+
+html[dir="ltr"] .contact form .input-box input,
+html[dir="ltr"] .contact form textarea {
+    text-align: left;
 }
 
 .contact form .input-box input {
@@ -432,7 +487,14 @@ span {
     flex-wrap: wrap;
     padding: 2rem 9%;
     background: var(--second-bg-color);
+}
+
+html[dir="rtl"] .footer {
     direction: rtl;
+}
+
+html[dir="ltr"] .footer {
+    direction: ltr;
 }
 
 .footer-text p {
@@ -491,18 +553,30 @@ span {
         background: var(--bg-color);
         border-top: .1rem solid rgba(0, 0, 0, .2);
         flex-direction: column;
-        text-align: right;
         transition: .3s ease;
+    }
+
+    html[dir="rtl"] .navbar {
+        text-align: right;
+        right: -100%;
+    }
+
+    html[dir="ltr"] .navbar {
+        text-align: left;
+        left: -100%;
     }
 
     .navbar.active {
         right: 0;
     }
 
+    html[dir="ltr"] .navbar.active {
+        left: 0;
+        right: auto;
+    }
+
     .navbar a {
         margin: 2rem 0;
-        display: block;
-        margin-right: 0;
         font-size: 2rem;
     }
 
