@@ -714,3 +714,21 @@ html[dir="rtl"] .home-content h3 {
         height: 40px;
     }
 }
+
+/* ====== إصلاح نهائي لـ Typed.js ====== */
+.multiple-text {
+    font-family: 'Cairo', sans-serif !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.typed-cursor {
+    font-family: 'Cairo', sans-serif !important;
+}
+
+html[lang="ar"] .multiple-text,
+html[dir="rtl"] .multiple-text {
+    font-family: 'Cairo', sans-serif !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
