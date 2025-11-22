@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>نبذة عني - أحمد عصمت</title>
+  <title>About Me - Ahmed Esmat</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <!-- إضافة خط Cairo -->
+  <!-- Add Cairo font -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ====== متغيرات الألوان والخطوط ====== */
+    /* ====== Color and Font Variables ====== */
     :root {
       --bg-color: #1f242d;
       --second-bg-color: #323946;
@@ -35,7 +35,7 @@
     body {
       background: var(--bg-color);
       color: var(--text-color);
-      direction: rtl; /* تغيير الاتجاه إلى RTL */
+      direction: ltr; /* Change direction to LTR */
     }
     
     section {
@@ -47,7 +47,7 @@
     .header {
       position: fixed;
       top: 0;
-      right: 0; /* تغيير من left إلى right */
+      left: 0; /* Change from right to left */
       width: 100%;
       padding: 2rem 9%;
       background: var(--bg-color);
@@ -66,8 +66,8 @@
       display: flex;
       align-items: center;
       position: absolute;
-      right: 50%; /* تغيير من left إلى right */
-      transform: translateX(50%); /* تعديل التحويل */
+      left: 50%; /* Change from right to left */
+      transform: translateX(-50%); /* Adjust transform */
     }
     
     .header .logo-img {
@@ -77,7 +77,7 @@
       display: block;
     }
     
-    /* ====== زر تبديل اللغة ====== */
+    /* ====== Language Switch Button ====== */
     .lang-switch {
       font-size: 1.6rem;
       z-index: 101;
@@ -98,14 +98,14 @@
       color: var(--main-color);
     }
     
-    /* ====== العناصر على اليسار ====== */
+    /* ====== Right Side Elements ====== */
     .nav-right {
       display: flex;
       align-items: center;
       gap: 2rem;
     }
     
-    /* زر القائمة للهاتف */
+    /* Mobile Menu Button */
     #menu-icon {
       font-size: 3.6rem;
       color: var(--text-color);
@@ -117,7 +117,7 @@
     .navbar a {
       font-size: 1.7rem;
       color: var(--text-color);
-      margin-left: 4rem; /* تغيير من right إلى left */
+      margin-right: 4rem; /* Change from left to right */
       transition: .3s;
     }
     
@@ -158,7 +158,7 @@
     }
     
     .about-full .about-content h2 {
-      text-align: right; /* تغيير من left إلى right */
+      text-align: left; /* Change from right to left */
       margin-bottom: 3rem;
       font-size: 4rem;
     }
@@ -167,12 +167,12 @@
       font-size: 1.8rem;
       margin: 2rem 0;
       line-height: 1.8;
-      text-align: right; /* تغيير من left إلى right */
+      text-align: left; /* Change from right to left */
     }
     
     .about-full .about-content ul {
       margin: 2rem 0;
-      padding-right: 2rem; /* تغيير من left إلى right */
+      padding-left: 2rem; /* Change from right to left */
     }
     
     .about-full .about-content li {
@@ -199,7 +199,7 @@
       color: var(--main-color);
     }
     
-    /* ====== قسم الأدوات واللغات ====== */
+    /* ====== Tools and Languages Section ====== */
     .skills-container {
       display: flex;
       flex-wrap: wrap;
@@ -263,7 +263,7 @@
       box-shadow: 0 0 1rem var(--main-color);
     }
     
-    /* ====== قسم مجالات الخبرة ====== */
+    /* ====== Expertise Areas Section ====== */
     .expertise-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -307,7 +307,7 @@
       font-size: 1.8rem;
     }
     
-    /* ====== قسم المميزات ====== */
+    /* ====== Features Section ====== */
     .features-container {
       margin: 25px 0;
     }
@@ -326,7 +326,7 @@
     }
     
     .feature-item:hover {
-      transform: translateX(-5px); /* تغيير من 5px إلى -5px */
+      transform: translateX(5px); /* Change from -5px to 5px */
       box-shadow: 0 0 1.5rem var(--main-color);
       border-color: var(--main-color);
     }
@@ -430,7 +430,7 @@
       .navbar {
         position: absolute;
         top: 100%;
-        right: 0; /* تغيير من left إلى right */
+        left: 0; /* Change from right to left */
         width: 100%;
         padding: 1rem 3%;
         background: var(--bg-color);
@@ -447,7 +447,7 @@
       .navbar a {
         margin: 1rem 0;
         display: block;
-        margin-left: 0; /* تغيير من right إلى left */
+        margin-right: 0; /* Change from left to right */
       }
       
       .header {
@@ -484,7 +484,7 @@
       }
       
       .about-full .about-content p {
-        text-align: right; /* تغيير من left إلى right */
+        text-align: left; /* Change from right to left */
       }
       
       .about-full .about-img img {
@@ -524,14 +524,14 @@
   </style>
 </head>
 <body>
-  <!-- نقطة الارتكاز للرابط العلوي -->
+  <!-- Anchor point for top link -->
   <div id="top"></div>
 
   <!-- Header -->
   <header class="header">
     <div class="lang-switch">
-      <a href="about.html">English</a> |
-      <a href="about-ar.html" class="active-lang">العربية</a>
+      <a href="about.html" class="active-lang">English</a> |
+      <a href="about-ar.html">العربية</a>
     </div>
 
     <a href="index.html" class="logo">
@@ -541,11 +541,11 @@
     <div class="nav-right">
       <i class='bx bx-menu' id="menu-icon"></i>
       <nav class="navbar" id="navbar">
-        <a href="index.html#home">الرئيسية</a>
-        <a href="index.html#about" class="active">نبذة عني</a>
-        <a href="index.html#services">الخدمات</a>
-        <a href="index.html#portfolio">معرض الأعمال</a>
-        <a href="index.html#contact">اتصل بي</a>
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about" class="active">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -553,19 +553,25 @@
   <!-- About Section -->
 <section class="about-full">
   <div class="about-img">
-    <img src="Picsart_25-11-17_21-14-37-565.jpg" alt="Ahmed Esmat">
+    <img src="Picsart_25-11-07_22-20-45-144.png" alt="Ahmed Esmat">
   </div>
   <div class="about-content">
-    <h2 class="heading">نبذة <span>عني</span></h2>
-    <p>أهلاً بك انا أحمد عصمت - مطور برمجيات متخصص في تصميم وتطوير المواقع الإلكترونية وتطبيقات الجوال (Web Developer & Full-Stack Developer)</p>
-    <p>انا هنا لمساعدتك في بناء موقع ويب أو متجر إلكتروني أو واجهة تطبيق مخصص بالكامل ليتناسب مع احتياجاتك ويعكس هوية علامتك التجارية بشكل احترافي. مع خبرة تزيد عن 6 سنوات في مجال التصميم والتطوير، أقدم لك حلاً متكاملاً يبدأ من الفكرة ويصل إلى التطوير.</p>
-    </p>
+    <h2 class="heading">About <span>Me</span></h2>
+    <p>Hello, I'm Ahmed — an expert in web design, development, and digital marketing with over 6 years of experience.</p>
+    <p>My passion lies in transforming ideas into exceptional digital experiences that blend creativity, technology, and measurable results.</p>
+    <p>My journey began with a simple curiosity about how the web works, which has since evolved into a passion for turning great ideas into powerful digital realities</p>
+    <p>I take pride in having been a success partner for numerous startups and established companies, always striving to build a digital presence worthy of my clients' ambitions. I believe that good design is not just about aesthetics—it's an effective bridge between your brand and your audience. That's why I deliver integrated solutions that combine:
 
-      <!-- قسم الأدوات واللغات البرمجية -->
-      <p><strong>الأدوات والتقنيات التي أستخدمها:</strong></p>
+· Engaging UI/UX Design
+· Responsive Website & App Development
+· Effective Digital Marketing Strategies
+· Custom E-commerce Solutions</p>
+
+      <!-- Tools and Programming Languages Section -->
+      <p><strong>Tools / Platforms & Programming Languages:</strong></p>
       <div class="skills-container">
         <div class="skill-category">
-          <h3><i class='bx bx-palette'></i> التصميم والتطوير</h3>
+          <h3><i class='bx bx-palette'></i> Design & Development</h3>
           <div class="skills-list">
             <span class="skill-tag">Figma</span>
             <span class="skill-tag">Adobe XD</span>
@@ -579,7 +585,7 @@
         </div>
         
         <div class="skill-category">
-          <h3><i class='bx bx-code-alt'></i> اللغات البرمجية</h3>
+          <h3><i class='bx bx-code-alt'></i> Programming Languages</h3>
           <div class="skills-list">
             <span class="skill-tag">HTML5</span>
             <span class="skill-tag">CSS3</span>
@@ -593,55 +599,55 @@
         </div>
       </div>
 
-      <!-- قسم مجالات الخبرة -->
-      <p><strong>مجالات الخبرة:</strong></p>
+      <!-- Expertise Areas Section -->
+      <p><strong>Areas of Expertise:</strong></p>
       <div class="expertise-container">
         <div class="expertise-item">
           <div class="expertise-icon">
             <i class='bx bx-cart'></i>
           </div>
-          <h4>المتاجر الإلكترونية</h4>
+          <h4>E-commerce Stores</h4>
         </div>
         
         <div class="expertise-item">
           <div class="expertise-icon">
             <i class='bx bx-building'></i>
           </div>
-          <h4>مواقع الشركات والمؤسسات</h4>
+          <h4>Corporate & Business Websites</h4>
         </div>
         
         <div class="expertise-item">
           <div class="expertise-icon">
             <i class='bx bx-book'></i>
           </div>
-          <h4>المنصات التعليمية والخدمية</h4>
+          <h4>Educational & Service Platforms</h4>
         </div>
         
         <div class="expertise-item">
           <div class="expertise-icon">
             <i class='bx bx-user'></i>
           </div>
-          <h4>المواقع الشخصية والمهنية</h4>
+          <h4>Personal & Professional Websites</h4>
         </div>
         
         <div class="expertise-item">
           <div class="expertise-icon">
             <i class='bx bx-trending-up'></i>
           </div>
-          <h4>صفحات الهبوط والتسويق الإلكتروني</h4>
+          <h4>Landing Pages & Digital Marketing</h4>
         </div>
       </div>
 
-      <!-- قسم المميزات -->
-      <p><strong>ما الذي يميزني عن غيري؟</strong></p>
+      <!-- Features Section -->
+      <p><strong>What Makes Me Stand Out?</strong></p>
       <div class="features-container">
         <div class="feature-item">
           <div class="feature-icon">
             <i class='bx bx-time'></i>
           </div>
           <div class="feature-content">
-            <h4>خبرة مثبتة لأكثر من 6 سنوات في تصميم وتطوير المواقع والتطبيقات</h4>
-            <p>استخدام أحدث تقنيات وأدوات التصميم والتطوير</p>
+            <h4>Proven Experience: Over 6 years in designing and developing websites and applications</h4>
+            <p>Using the latest design and development technologies and tools</p>
           </div>
         </div>
         
@@ -650,8 +656,8 @@
             <i class='bx bx-search-alt'></i>
           </div>
           <div class="feature-content">
-            <h4>تصاميم مخصصة لعلامتك</h4>
-            <p>جودة عالية وإهتمام بالتفاصيل الصغيرة</p>
+            <h4>Attention to Detail: Ensuring exceptional quality and performance</h4>
+            <p>High quality and attention to small details</p>
           </div>
         </div>
         
@@ -660,18 +666,21 @@
             <i class='bx bx-calendar-check'></i>
           </div>
           <div class="feature-content">
-            <h4>التزام بمواعيد التسليم</h4>
-            <p>دعم متكامل يستمر لما بعد التسليم</p>
+            <h4>Timely Commitment: Respecting deadlines and delivering on time</h4>
+            <p>Comprehensive support that continues after delivery</p>
           </div>
         </div>
+      </div>
 
-      <a href="index.html" class="btn">العودة للرئيسية</a>
+      <p>Before we discuss your next project, I invite you to explore my previous work. Let's embark on a journey of success together!</p>
+
+      <a href="index.html" class="btn">Back to Home</a>
     </div>
   </section>
 
   <footer class="footer">
     <div class="footer-text">
-      <p>© 2025 أحمد عصمت | جميع الحقوق محفوظة.</p>
+      <p>© 2025 Ahmed Esmat | All Rights Reserved.</p>
     </div>
     <div class="footer-iconTop">
       <a href="#top"><i class='bx bx-up-arrow-alt'></i></a>
@@ -679,7 +688,7 @@
   </footer>
 
   <script>
-    // JavaScript أساسي للقائمة المتحركة
+    // Basic JavaScript for mobile menu
     document.addEventListener('DOMContentLoaded', function() {
       const menuIcon = document.getElementById('menu-icon');
       const navbar = document.getElementById('navbar');
@@ -688,7 +697,7 @@
         navbar.classList.toggle('active');
       });
       
-      // إغلاق القائمة عند النقر على رابط
+      // Close menu when clicking on a link
       const navLinks = document.querySelectorAll('.navbar a');
       navLinks.forEach(link => {
         link.addEventListener('click', function() {
