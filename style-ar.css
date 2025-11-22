@@ -553,6 +553,39 @@ span {
     color: var(--second-bg-color);
 }
 
+/* ====== تعديلات Typed.js للنص العربي ====== */
+.multiple-text {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+}
+
+html[lang="ar"] .multiple-text,
+html[dir="rtl"] .multiple-text {
+    font-family: 'Cairo', sans-serif !important;
+    direction: rtl !important;
+    text-align: right;
+}
+
+html[lang="en"] .multiple-text,
+html[dir="ltr"] .multiple-text {
+    font-family: 'Poppins', sans-serif;
+    direction: ltr;
+    text-align: left;
+}
+
+/* تأكد من أن النص المتحرك يظهر بشكل صحيح */
+.home-content h3 .multiple-text {
+    min-height: 4rem;
+    display: inline-block;
+}
+
+/* تحسين المظهر للنص العربي */
+html[lang="ar"] .home-content h3,
+html[dir="rtl"] .home-content h3 {
+    text-align: right;
+    font-family: 'Cairo', sans-serif;
+}
+
 /* ====== Responsive Design ====== */
 @media (max-width: 991px) {
     .header { padding: 2rem 3%; }
