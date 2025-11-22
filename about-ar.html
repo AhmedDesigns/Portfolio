@@ -3,95 +3,699 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>من أنا - أحمد عصمت</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="style.css">
+  <title>نبذة عني - أحمد عصمت</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <!-- إضافة خط Cairo -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ====== متغيرات الألوان والخطوط ====== */
+    :root {
+      --bg-color: #1f242d;
+      --second-bg-color: #323946;
+      --text-color: #fff;
+      --main-color: #0ef;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      border: none;
+      outline: none;
+      scroll-behavior: smooth;
+      font-family: 'Cairo', sans-serif;
+    }
+    
+    html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+    }
+    
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      direction: rtl; /* تغيير الاتجاه إلى RTL */
+    }
+    
+    section {
+      min-height: 100vh;
+      padding: 10rem 9% 2rem;
+    }
+    
+    /* ====== Header ====== */
+    .header {
+      position: fixed;
+      top: 0;
+      right: 0; /* تغيير من left إلى right */
+      width: 100%;
+      padding: 2rem 9%;
+      background: var(--bg-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .header.sticky {
+      border-bottom: .1rem solid rgba(0, 0, 0, .2);
+    }
+    
+    /* ===== Logo Image ===== */
+    .header a.logo {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 50%; /* تغيير من left إلى right */
+      transform: translateX(50%); /* تعديل التحويل */
+    }
+    
+    .header .logo-img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    
+    /* ====== زر تبديل اللغة ====== */
+    .lang-switch {
+      font-size: 1.6rem;
+      z-index: 101;
+    }
+    
+    .lang-switch a {
+      color: var(--text-color);
+      margin: 0 0.5rem;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+    
+    .lang-switch a.active-lang {
+      color: var(--main-color);
+    }
+    
+    .lang-switch a:hover {
+      color: var(--main-color);
+    }
+    
+    /* ====== العناصر على اليسار ====== */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    /* زر القائمة للهاتف */
+    #menu-icon {
+      font-size: 3.6rem;
+      color: var(--text-color);
+      display: none;
+      cursor: pointer;
+    }
+    
+    /* Navbar Links */
+    .navbar a {
+      font-size: 1.7rem;
+      color: var(--text-color);
+      margin-left: 4rem; /* تغيير من right إلى left */
+      transition: .3s;
+    }
+    
+    .navbar a:hover,
+    .navbar a.active {
+      color: var(--main-color);
+    }
+    
+    /* ====== About Full ====== */
+    .about-full {
+      padding-top: 12rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+      background: var(--second-bg-color);
+      flex-wrap: wrap;
+    }
+    
+    .about-full .about-img img {
+      width: 35vw;
+      max-width: 500px;
+      height: auto;
+      border-radius: 2rem;
+      display: block;
+      box-shadow: 0 0 2rem var(--main-color);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    
+    .about-full .about-img img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 3rem var(--main-color);
+    }
+    
+    .about-full .about-content {
+      flex: 1 1 40rem;
+    }
+    
+    .about-full .about-content h2 {
+      text-align: right; /* تغيير من left إلى right */
+      margin-bottom: 3rem;
+      font-size: 4rem;
+    }
+    
+    .about-full .about-content p {
+      font-size: 1.8rem;
+      margin: 2rem 0;
+      line-height: 1.8;
+      text-align: right; /* تغيير من left إلى right */
+    }
+    
+    .about-full .about-content ul {
+      margin: 2rem 0;
+      padding-right: 2rem; /* تغيير من left إلى right */
+    }
+    
+    .about-full .about-content li {
+      font-size: 1.6rem;
+      margin: 1rem 0;
+      line-height: 1.6;
+      list-style-type: disc;
+    }
+    
+    .about-full .about-content strong {
+      color: var(--main-color);
+    }
+    
+    .about-full .btn {
+      margin-top: 2rem;
+    }
+    
+    .heading {
+      text-align: center;
+      font-size: 4.5rem;
+    }
+    
+    span {
+      color: var(--main-color);
+    }
+    
+    /* ====== قسم الأدوات واللغات ====== */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 25px 0;
+    }
+    
+    .skill-category {
+      flex: 1;
+      min-width: 300px;
+      background: var(--bg-color);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: .2rem solid var(--bg-color);
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 1.5rem var(--main-color);
+      border-color: var(--main-color);
+    }
+    
+    .skill-category h3 {
+      color: var(--text-color);
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--main-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 2.2rem;
+    }
+    
+    .skill-category h3 i {
+      color: var(--main-color);
+    }
+    
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .skill-tag {
+      background: rgba(14, 239, 255, 0.1);
+      color: var(--text-color);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: 1px solid var(--main-color);
+    }
+    
+    .skill-tag:hover {
+      background: var(--main-color);
+      color: var(--second-bg-color);
+      transform: scale(1.05);
+      box-shadow: 0 0 1rem var(--main-color);
+    }
+    
+    /* ====== قسم مجالات الخبرة ====== */
+    .expertise-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+    
+    .expertise-item {
+      background: var(--bg-color);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      border: .2rem solid var(--bg-color);
+    }
+    
+    .expertise-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 1.5rem var(--main-color);
+      border-color: var(--main-color);
+    }
+    
+    .expertise-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(14, 239, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      color: var(--main-color);
+      font-size: 24px;
+      border: .2rem solid var(--main-color);
+    }
+    
+    .expertise-item h4 {
+      color: var(--text-color);
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+    
+    /* ====== قسم المميزات ====== */
+    .features-container {
+      margin: 25px 0;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding: 20px;
+      background: var(--bg-color);
+      border-radius: 10px;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: .2rem solid var(--bg-color);
+    }
+    
+    .feature-item:hover {
+      transform: translateX(-5px); /* تغيير من 5px إلى -5px */
+      box-shadow: 0 0 1.5rem var(--main-color);
+      border-color: var(--main-color);
+    }
+    
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(14, 239, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--main-color);
+      font-size: 20px;
+      flex-shrink: 0;
+      border: .2rem solid var(--main-color);
+    }
+    
+    .feature-content h4 {
+      color: var(--text-color);
+      margin-bottom: 5px;
+      font-size: 1.8rem;
+    }
+    
+    .feature-content p {
+      font-size: 1.6rem;
+    }
+    
+    /* ====== Buttons ====== */
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.8rem;
+      background: var(--main-color);
+      border-radius: 4rem;
+      box-shadow: 0 0 1rem var(--main-color);
+      font-size: 1.6rem;
+      color: var(--second-bg-color);
+      letter-spacing: .1rem;
+      font-weight: 600;
+      transition: .5s ease;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    
+    .btn:hover {
+      box-shadow: none;
+    }
+    
+    /* ====== Footer ====== */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 2rem 9%;
+      background: var(--second-bg-color);
+    }
+    
+    .footer-text p {
+      font-size: 1.6rem;
+    }
+    
+    .footer-iconTop a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: .8rem;
+      background: var(--main-color);
+      border-radius: .8rem;
+      transition: .5s ease;
+    }
+    
+    .footer-iconTop a:hover {
+      box-shadow: 0 0 1rem var(--main-color);
+    }
+    
+    .footer-iconTop a i {
+      font-size: 2.4rem;
+      color: var(--second-bg-color);
+    }
+    
+    /* ====== Responsive Design ====== */
+    @media (max-width: 991px) {
+      .header { padding: 2rem 3%; }
+      section { padding: 10rem 3% 2rem; }
+      .footer { padding: 2rem 3%; }
+      .about-full .about-img img {
+        width: 90vw;
+        max-width: 600px;
+      }
+      .about-full {
+        padding-top: 10rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      #menu-icon {
+        display: block;
+      }
+      
+      .navbar {
+        position: absolute;
+        top: 100%;
+        right: 0; /* تغيير من left إلى right */
+        width: 100%;
+        padding: 1rem 3%;
+        background: var(--bg-color);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        display: none;
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .navbar.active {
+        display: flex;
+      }
+      
+      .navbar a {
+        margin: 1rem 0;
+        display: block;
+        margin-left: 0; /* تغيير من right إلى left */
+      }
+      
+      .header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative;
+      }
+      
+      .header a.logo {
+        position: static;
+        transform: none;
+        order: 2;
+      }
+      
+      .nav-right {
+        order: 1;
+      }
+      
+      .lang-switch {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+      }
+      
+      .about-full {
+        padding-top: 8rem;
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .about-full .about-content h2 {
+        text-align: center;
+      }
+      
+      .about-full .about-content p {
+        text-align: right; /* تغيير من left إلى right */
+      }
+      
+      .about-full .about-img img {
+        width: 80vw;
+        margin-top: 0;
+      }
+      
+      .skills-container {
+        flex-direction: column;
+      }
+      
+      .expertise-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 450px) {
+      .heading { font-size: 3.5rem; }
+      .about-full .about-content h2 { font-size: 3rem; }
+      .about-full .about-content p { font-size: 1.6rem; }
+      .about-full { padding-top: 6rem; }
+      
+      .header {
+        padding: 1rem 3%;
+      }
+      
+      .header .logo-img {
+        height: 40px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- نقطة الارتكاز للرابط العلوي -->
+  <div id="top"></div>
 
   <!-- Header -->
   <header class="header">
     <div class="lang-switch">
-      <a href="../en/about.html">English</a> |
-      <a href="../ar/about.html" class="active-lang">العربية</a>
+      <a href="about.html">English</a> |
+      <a href="about-ar.html" class="active-lang">العربية</a>
     </div>
 
     <a href="index.html" class="logo">
-      <img src="Black and White Modern Personal Logo_20251103_114315_0000_page-0001_edit_80067128761219.png" alt="الشعار" class="logo-img">
+      <img src="Black and White Modern Personal Logo_20251103_114315_0000_page-0001_edit_80067128761219.png" alt="Ahmed Esmat Logo" class="logo-img">
     </a>
 
     <div class="nav-right">
       <i class='bx bx-menu' id="menu-icon"></i>
-      <nav class="navbar">
+      <nav class="navbar" id="navbar">
         <a href="index.html#home">الرئيسية</a>
-        <a href="index.html#about" class="active">من أنا</a>
+        <a href="index.html#about" class="active">نبذة عني</a>
         <a href="index.html#services">الخدمات</a>
-        <a href="index.html#portfolio">أعمالي</a>
-        <a href="index.html#contact">تواصل معي</a>
+        <a href="index.html#portfolio">معرض الأعمال</a>
+        <a href="index.html#contact">اتصل بي</a>
       </nav>
     </div>
   </header>
 
   <!-- About Section -->
-  <section class="about" id="about">
-    <div class="about-img">
-      <img src="Picsart_25-11-07_22-20-45-144.png" alt="صورة أحمد عصمت">
-    </div>
-    <div class="about-content">
-      <h2 class="heading">من <span>أنا</span></h2>
+<section class="about-full">
+  <div class="about-img">
+    <img src="Picsart_25-11-17_21-14-37-565.jpg" alt="Ahmed Esmat">
+  </div>
+  <div class="about-content">
+    <h2 class="heading">نبذة <span>عني</span></h2>
+    <p>أهلاً بك انا أحمد عصمت - مطور برمجيات متخصص في تصميم وتطوير المواقع الإلكترونية وتطبيقات الجوال (Web Developer & Full-Stack Developer)</p>
+    <p>انا هنا لمساعدتك في بناء موقع ويب أو متجر إلكتروني أو واجهة تطبيق مخصص بالكامل ليتناسب مع احتياجاتك ويعكس هوية علامتك التجارية بشكل احترافي. مع خبرة تزيد عن 6 سنوات في مجال التصميم والتطوير، أقدم لك حلاً متكاملاً يبدأ من الفكرة ويصل إلى التطوير.</p>
+    </p>
 
-      <p>اهلاً، أنا أحمد — مصمم ومطور ويب، وتسويق الكتروني بخبرة اكثر من 6 سنوات.</p>
-      <p>شغفي هو تحويل الأفكار إلى تجارب رقمية متميزة تجمع بين الإبداع، التقنية، والنتائج القابلة للقياس.</p>
-      <p>أفتخر بأنني كنت شريك نجاح للعديد من الشركات والمؤسسات الناشئة، وأسعى دائماً إلى بناء حضور رقمي يليق بطموحات العملاء.</p>
-      <p>أؤمن أن التصميم الجيد ليس مجرد شكل جميل، بل هو جسر فعّال بين العلامة التجارية وجمهورها. لذلك أعمل على تقديم حلول متكاملة تجمع بين:</p>
+      <!-- قسم الأدوات واللغات البرمجية -->
+      <p><strong>الأدوات والتقنيات التي أستخدمها:</strong></p>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3><i class='bx bx-palette'></i> التصميم والتطوير</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Adobe XD</span>
+            <span class="skill-tag">WordPress</span>
+            <span class="skill-tag">Shopify</span>
+            <span class="skill-tag">Webflow</span>
+            <span class="skill-tag">Wix</span>
+            <span class="skill-tag">Squarespace</span>
+            <span class="skill-tag">Salla</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3><i class='bx bx-code-alt'></i> اللغات البرمجية</h3>
+          <div class="skills-list">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">jQuery</span>
+            <span class="skill-tag">Bootstrap</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">Dart</span>
+          </div>
+        </div>
+      </div>
 
-      <ul>
-        <li>تصميم واجهات مستخدم جذابة (UI/UX)</li>
-        <li>تطوير مواقع وتطبيقات متجاوبة</li>
-        <li>استراتيجيات تسويق رقمية فعالة</li>
-        <li>حلول تجارة إلكترونية مخصصة</li>
-      </ul>
+      <!-- قسم مجالات الخبرة -->
+      <p><strong>مجالات الخبرة:</strong></p>
+      <div class="expertise-container">
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <i class='bx bx-cart'></i>
+          </div>
+          <h4>المتاجر الإلكترونية</h4>
+        </div>
+        
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <i class='bx bx-building'></i>
+          </div>
+          <h4>مواقع الشركات والمؤسسات</h4>
+        </div>
+        
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <i class='bx bx-book'></i>
+          </div>
+          <h4>المنصات التعليمية والخدمية</h4>
+        </div>
+        
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <i class='bx bx-user'></i>
+          </div>
+          <h4>المواقع الشخصية والمهنية</h4>
+        </div>
+        
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <i class='bx bx-trending-up'></i>
+          </div>
+          <h4>صفحات الهبوط والتسويق الإلكتروني</h4>
+        </div>
+      </div>
 
-      <p><strong>الأدوات / المنصات واللغات البرمجية:</strong></p>
+      <!-- قسم المميزات -->
+      <p><strong>ما الذي يميزني عن غيري؟</strong></p>
+      <div class="features-container">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class='bx bx-time'></i>
+          </div>
+          <div class="feature-content">
+            <h4>خبرة مثبتة لأكثر من 6 سنوات في تصميم وتطوير المواقع والتطبيقات</h4>
+            <p>استخدام أحدث تقنيات وأدوات التصميم والتطوير</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class='bx bx-search-alt'></i>
+          </div>
+          <div class="feature-content">
+            <h4>تصاميم مخصصة لعلامتك</h4>
+            <p>جودة عالية وإهتمام بالتفاصيل الصغيرة</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class='bx bx-calendar-check'></i>
+          </div>
+          <div class="feature-content">
+            <h4>التزام بمواعيد التسليم</h4>
+            <p>دعم متكامل يستمر لما بعد التسليم</p>
+          </div>
+        </div>
 
-      <ul>
-        <li><strong>منصات التصميم والتطوير:</strong> Figma · Adobe XD · WordPress · Shopify · Webflow · Wix · Squarespace · Salla</li>
-        <li><strong>اللغات البرمجية والتقنيات:</strong> HTML5 · CSS3 · JavaScript · jQuery · Bootstrap · React · PHP · Dart</li>
-      </ul>
-
-      <p><strong>مجالات العمل:</strong></p>
-      <ul>
-        <li>المتاجر الإلكترونية</li>
-        <li>مواقع الشركات والمؤسسات</li>
-        <li>المنصات التعليمية والخدمية</li>
-        <li>المواقع الشخصية والمهنية</li>
-        <li>صفحات الهبوط والتسويق الالكتروني</li>
-      </ul>
-
-      <p><strong>ما الذي يميزني؟</strong></p>
-      <ul>
-        <li>خبرة مثبتة لأكثر من 6 سنوات في تصميم وتطوير المواقع والتطبيقات</li>
-        <li>إهتمام بالتفاصيل لضمان جودة وأداء استثنائي</li>
-        <li>الالتزام بالوقت واحترام مواعيد التسليم</li>
-        <li>دعم متكامل يبدأ من الفكرة ويستمر حتى ما بعد التسليم</li>
-      </ul>
-
-      <p>قبل أن نبدأ مناقشة مشروعك القادم، أدعوك لاكتشاف أعمالي السابقة ولنبدأ رحلة نجاح معاً.</p>
-
-      <a href="index.html#home" class="btn">العودة للرئيسية</a>
+      <a href="index.html" class="btn">العودة للرئيسية</a>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-text">
       <p>© 2025 أحمد عصمت | جميع الحقوق محفوظة.</p>
     </div>
     <div class="footer-iconTop">
-      <a href="#about"><i class='bx bx-up-arrow-alt'></i></a>
+      <a href="#top"><i class='bx bx-up-arrow-alt'></i></a>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></
+  <script>
+    // JavaScript أساسي للقائمة المتحركة
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuIcon = document.getElementById('menu-icon');
+      const navbar = document.getElementById('navbar');
+      
+      menuIcon.addEventListener('click', function() {
+        navbar.classList.toggle('active');
+      });
+      
+      // إغلاق القائمة عند النقر على رابط
+      const navLinks = document.querySelectorAll('.navbar a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navbar.classList.remove('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
