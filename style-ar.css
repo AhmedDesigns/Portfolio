@@ -247,7 +247,7 @@ span {
 }
 
 .about-content {
-    text-align: center; /* تغيير من left إلى center */
+    text-align: center;
 }
 
 .about-content h2 {
@@ -269,7 +269,7 @@ span {
 }
 
 .about-btn-container {
-    text-align: center; /* تغيير من left إلى center */
+    text-align: center;
     direction: ltr;
 }
 
@@ -553,37 +553,36 @@ span {
     color: var(--second-bg-color);
 }
 
-/* ====== تعديلات Typed.js للنص العربي ====== */
+/* ====== إصلاح نهائي لـ Typed.js ====== */
 .multiple-text {
-    font-family: 'Cairo', sans-serif;
-    direction: rtl;
+    font-family: 'Cairo', sans-serif !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.typed-cursor {
+    font-family: 'Cairo', sans-serif !important;
 }
 
 html[lang="ar"] .multiple-text,
 html[dir="rtl"] .multiple-text {
     font-family: 'Cairo', sans-serif !important;
     direction: rtl !important;
-    text-align: right;
+    text-align: right !important;
 }
 
-html[lang="en"] .multiple-text,
-html[dir="ltr"] .multiple-text {
-    font-family: 'Poppins', sans-serif;
-    direction: ltr;
-    text-align: left;
-}
-
-/* تأكد من أن النص المتحرك يظهر بشكل صحيح */
-.home-content h3 .multiple-text {
-    min-height: 4rem;
-    display: inline-block;
-}
-
-/* تحسين المظهر للنص العربي */
+/* تأكيد إضافي على النص العربي */
 html[lang="ar"] .home-content h3,
 html[dir="rtl"] .home-content h3 {
-    text-align: right;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif !important;
+    text-align: right !important;
+}
+
+html[lang="ar"] .home-content .multiple-text,
+html[dir="rtl"] .home-content .multiple-text {
+    font-family: 'Cairo', sans-serif !important;
+    direction: rtl !important;
+    text-align: right !important;
 }
 
 /* ====== Responsive Design ====== */
@@ -713,22 +712,4 @@ html[dir="rtl"] .home-content h3 {
     .header .logo-img {
         height: 40px;
     }
-}
-
-/* ====== إصلاح نهائي لـ Typed.js ====== */
-.multiple-text {
-    font-family: 'Cairo', sans-serif !important;
-    direction: rtl !important;
-    text-align: right !important;
-}
-
-.typed-cursor {
-    font-family: 'Cairo', sans-serif !important;
-}
-
-html[lang="ar"] .multiple-text,
-html[dir="rtl"] .multiple-text {
-    font-family: 'Cairo', sans-serif !important;
-    direction: rtl !important;
-    text-align: right !important;
 }
