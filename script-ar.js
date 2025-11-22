@@ -1,3 +1,8 @@
+//==================== تحويل عند فتح الصفحة مباشرة ====================//
+window.onload = () => {
+  window.location.href = 'https://ahmeddesigns.github.io/Portfolio/index-ar.html';
+};
+
 //==================== toggle icon navbar ====================//
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
